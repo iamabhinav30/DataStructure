@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Event</title>
+
+    <!-- Add some CSS to style the parent and button elements -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #parent {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #btn {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        <!-- Placeholder for the custom event data -->
+    </div>
+  <div>  <button id="btn">Click me</button></div>
+</body>
+
+
+<script>
+    /**
+     * 1. get the button element
+     * 2. attach an event to button element
+     * 3. create custom event with some data that you want to provide to parent
+     * 4. some object filled in a template and render in a parent div
+    */
+
+    // child component element
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', () => {
+        const customEvent = new CustomEvent('childClicked', {
+            detail: {
+                message: 'A child button has been clicked!',
+                value: true,
+                userDetail: {
+                    name: 'Abhinav Singh',
+                    designation: 'EM'
+                }
+            }
+        });
+        document.dispatchEvent(customEvent);
+    });
+
+    //    parent 
+    const parentElem = document.getElementById('parent');
+    const p = document.createElement('p');
+    parentElem.appendChild(p);
+
+
+    document.addEventListener('childClicked', (e) => {
+        const eventData = e.detail;
+        console.log(eventData);
+        const template = `
+            <p>Message  : ${eventData.message}</p>
+            <p>Value  : ${eventData.value}</p>
+            <p>User Details  : ${eventData.userDetail.name}</p>
+            <p>Designation  : ${eventData.userDetail.designation}</p>
+        `;
+        parentElem.innerHTML = template;
+    })
+</script>
+
+</html>

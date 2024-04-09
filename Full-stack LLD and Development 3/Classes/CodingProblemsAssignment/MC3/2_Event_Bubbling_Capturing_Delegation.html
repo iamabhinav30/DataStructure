@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event_Bubbling_Capturing_Delegation</title>
+</head>
+
+<body style="font-size: 20px; font-weight: bold; padding: 25px;">
+    Click the body element
+    <div id="outer" style="color:green">
+        Outer has been clicked
+        <div id="inner" style="color:red">
+            inner text has been clicked
+        </div>
+    </div>
+
+    <ul>
+        <li>Item 0</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <!-- Assignment -->
+    <input type="text" name="text-field" id="my-input">
+    <p id="displayText"></p>
+
+</body>
+<script>
+
+    // assignment
+    const inputElem = document.getElementById('my-input');
+    const displayTxt = document.getElementById('displayText');
+
+    inputElem.addEventListener('input',(e)=>{
+        displayTxt.textContent =  event.target.value;
+    })
+
+    // Event Delegation
+    const list = document.querySelector('ul');
+    list.addEventListener('click',(event)=>{
+        if(event.target.tagName === 'LI'){
+            console.log('clicked on : ', event.target.textContent);
+        }
+    });
+
+
+    // by default event bubbeling happends
+    // const innerDiv = document.getElementById('inner');
+    // innerDiv.addEventListener('click',()=>{
+    //     console.log('inner div has been clicked')
+    // });
+
+    // const outerDiv = document.getElementById('outer');
+    // outerDiv.addEventListener('click',()=>{
+    //     console.log('outer div has been clicked');
+    //     event.stopPropagation();
+    // });
+
+    // const body = document.querySelector('body');
+    // body.addEventListener('click',()=>{
+    //     console.log('body has been clicked')
+    // });
+    
+
+    // Below are Event capturing by passing true in addevent Listener
+    // const innerDiv = document.getElementById('inner');
+    // innerDiv.addEventListener('click',()=>{
+    //     console.log('inner div has been clicked');
+      
+    // }, true);
+
+    // const outerDiv = document.getElementById('outer');
+    // outerDiv.addEventListener('click',()=>{
+    //     console.log('outer div has been clicked');
+      
+    // }, true);
+
+    // const body = document.querySelector('body');
+    // body.addEventListener('click',()=>{
+    //     console.log('body has been clicked')
+    // }, true);
+
+
+   
+</script>
+</html>
