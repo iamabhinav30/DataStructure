@@ -12,3 +12,16 @@
     Step4 : cd counter-app
             npm run start
 
+# How to create react app via VITE
+
+    Step1:  install nodeJS : https://nodejs.org/en/download
+            check version : node -v, npm -v
+
+    Step2 : npm create vite@latest
+            a promt will come up to ask you the project setup
+
+    Step3 : install dependencies
+            npm i 
+        
+    Step4 : cd counte-app
+            npm run dev
