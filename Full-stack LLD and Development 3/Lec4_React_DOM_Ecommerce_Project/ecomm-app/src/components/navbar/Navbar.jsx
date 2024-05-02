@@ -1,5 +1,6 @@
-import { NavLink,  } from "react-router-dom";
+import { Link, NavLink,  } from "react-router-dom";
 import './navbar.css';
+import {FaOpencart} from 'react-icons/fa'
 
 const Navbar = () => {
     return (
@@ -18,6 +19,13 @@ const Navbar = () => {
                     <NavLink to='/house-items'>House Items</NavLink>
                 </li>
             </ul>
+
+            <div>
+                <Link to='/cart' className='cart-icon-container'>
+                
+                <FaOpencart className='cart-icon' />
+                </Link>
+            </div>
         </>
     )
 }

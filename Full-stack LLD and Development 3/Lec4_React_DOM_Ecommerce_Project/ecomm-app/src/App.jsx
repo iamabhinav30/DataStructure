@@ -1,5 +1,7 @@
-import Child from "./components/contextAPI/Child"
-import Counter from "./components/contextAPI/counter"
+import Data from "./components/contextAPI/Data"
+import Child from "./components/contextAPI/counter/Child"
+import Counter from "./components/contextAPI/counter/Counter"
+import Loader from "./components/loader/Loader"
 import CounterProvider from "./context/CounterProvider"
 import AppRoutes from "./routes/AppRoutes"
 
@@ -10,8 +12,13 @@ function App() {
       <CounterProvider>
         <AppRoutes />
         {/* <Parent /> */}
+
         <Counter />
-        <Child/>
+        <Child />
+
+        <Data/>
+        {/* 
+        <Loader /> */}
       </CounterProvider>
     </>
   )
